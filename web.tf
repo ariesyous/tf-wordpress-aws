@@ -4,7 +4,7 @@
 data "template_file" "wpdeploy"{
   template = "${file("./webconfig.cfg")}"
 
-  vars {
+  vars = {
     db_ip = "${aws_db_instance.wpdb.address}"
     db_user = "${var.db_user}"
     db_password = "${var.db_password}"
@@ -33,7 +33,7 @@ resource "aws_instance" "web-server" {
   # my private key for testing
   #key_name = "win3_aws"
 
-  tags {
+  tags = {
     Name = "AZ 1 web-server-${count.index}"
   }
   count = "${var.web_number}"
@@ -51,7 +51,7 @@ resource "aws_instance" "web-server2" {
   # my private key for testing
   key_name = "win3_aws"
 
-  tags {
+  tags = {
     Name = "AZ 2 web-server-${count.index}"
   }
   count = "${var.web_number1}"
