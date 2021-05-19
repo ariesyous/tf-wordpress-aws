@@ -10,7 +10,7 @@ resource "aws_vpc" "app_vpc" {
   cidr_block = "192.168.0.0/16"
   assign_generated_ipv6_cidr_block = false
   enable_dns_support = true
-  tags {
+  tags = {
     Name = "WP Solution VPC"
   }
 }
@@ -31,7 +31,7 @@ resource "aws_subnet" "pub_subnet1"{
   availability_zone = "${data.aws_availability_zones.available.names[0]}"
   vpc_id = "${aws_vpc.app_vpc.id}"
   cidr_block = "192.168.10.0/24"
-  tags {
+  tags = {
       Name = "public subnet 1"
   }
 }
@@ -42,7 +42,7 @@ resource "aws_subnet" "pub_subnet2"{
   availability_zone = "${data.aws_availability_zones.available.names[1]}"
   vpc_id = "${aws_vpc.app_vpc.id}"
   cidr_block = "192.168.11.0/24"
-  tags {
+  tags = {
       Name = "public subnet 2"
   }
 }
@@ -52,7 +52,7 @@ resource "aws_subnet" "web_subnet1" {
   vpc_id = "${aws_vpc.app_vpc.id}"
   availability_zone = "${data.aws_availability_zones.available.names[0]}"
   cidr_block = "192.168.20.0/24"
-  tags {
+  tags = {
     Name = "web server subnet 1"
   }
 }
@@ -62,7 +62,7 @@ resource "aws_subnet" "web_subnet2" {
   vpc_id = "${aws_vpc.app_vpc.id}"
   availability_zone = "${data.aws_availability_zones.available.names[1]}"
   cidr_block = "192.168.21.0/24"
-  tags {
+  tags = {
     Name = "web server subnet 2"
   }
 }
@@ -73,7 +73,7 @@ resource "aws_subnet" "db_subnet1" {
   vpc_id = "${aws_vpc.app_vpc.id}"
   availability_zone = "${data.aws_availability_zones.available.names[0]}"
   cidr_block = "192.168.30.0/24"
-  tags {
+  tags = {
     Name = "database subnet 1"
   }
 }
@@ -83,7 +83,7 @@ resource "aws_subnet" "db_subnet2" {
   vpc_id = "${aws_vpc.app_vpc.id}"
   availability_zone = "${data.aws_availability_zones.available.names[1]}"
   cidr_block = "192.168.31.0/24"
-  tags {
+  tags = {
     Name = "database subnet 2"
   }
 }
@@ -113,7 +113,7 @@ resource "aws_eip" "gwip2" {
 resource "aws_nat_gateway" "gw1" {
   allocation_id = "${aws_eip.gwip1.id}"
   subnet_id = "${aws_subnet.pub_subnet1.id}"
-  tags {
+  tags = {
     Name = "Wordpress TF NAT Gateway 1"
   }
 }
@@ -122,7 +122,7 @@ resource "aws_nat_gateway" "gw1" {
 resource "aws_nat_gateway" "gw2" {
   allocation_id = "${aws_eip.gwip1.id}"
   subnet_id = "${aws_subnet.pub_subnet2.id}"
-  tags {
+  tags = {
     Name = "Wordpress TF NAT Gateway 2"
   }
 }

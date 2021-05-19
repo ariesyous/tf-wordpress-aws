@@ -23,10 +23,8 @@ variable "db_user" {
 }
 
 
-# Specify a sg with all egress access open for Symphony, uncomment this variable
-#variable "open_sg" {}
 
-Commenting out because Code Pipes will provide these by default
+# Commenting out because Code Pipes will provide these by default
 
 variable "aws_secret_key" {}
 variable "aws_access_key" {}
