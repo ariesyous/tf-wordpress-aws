@@ -13,7 +13,7 @@ resource "aws_db_instance" "wpdb" {
   instance_class = "db.m4.large"
   allocated_storage = 50
   engine = "mysql"
-  name = "wordpress"
+  db_name = "wordpress"
   password = "${var.db_password}"
   username = "${var.db_user}"
   # If using Symphony, use 5.7.00, otherwise us AWS reccomended version 

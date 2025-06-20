@@ -1,6 +1,6 @@
 variable "web_number" {
-  type = number
-  default = "1"
+  type    = number
+  default = 1
 }
 #variable "web_number2" {}
 variable "web_ami" {
